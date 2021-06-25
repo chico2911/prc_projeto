@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  marvel_database:
+    image: zzglider/mygraphdb:prc2021
+    container_name: marvel_database
+    ports:
+        - '7200:7200'
+  marvel_api:
+    image: prc2021/marvel_api
+    container_name: marvel_api
+    ports:
+        - '3000:3000'

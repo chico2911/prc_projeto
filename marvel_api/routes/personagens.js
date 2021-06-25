@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var axios = require('axios');
-var gdb =require('../utils/graphdb')
+var gdb = require('../utils/graphdb')
 
 /* GET personagens by Power. */
 router.get('/power/:power',async function(req, res, next) {
@@ -37,6 +36,13 @@ router.get('/', async function(req, res, next) {
   dados = parsePersonagensResult(result)
   res.status(200).jsonp(dados);
 });
+
+router.get('/search/:name',async function(req,res,next){
+  query = 'select DISTINCT ?p ?alignment ?combat ?durability ?eyecolor ?gender ?haircolor ?height ?intelligence ?name ?power ?publisher ?race ?skincolor ?speed ?strength ?total ?weight where  {?p a :Personagem; :name ?name FILTER regex(?name, \''+req.params.name+'\'). OPTIONAL{?p :alignment ?alignment}. OPTIONAL{?p :combat ?combat}. OPTIONAL{?p :durability ?durability}.  OPTIONAL{?p :eyecolor ?eyecolor}. OPTIONAL{?p :gender ?gender}. OPTIONAL{?p :haircolor ?haircolor}. OPTIONAL{?p :height ?height}. OPTIONAL{?p :intelligence ?intelligence}. OPTIONAL{?p :name ?name}. OPTIONAL{?p :power ?power}. OPTIONAL{?p :publisher ?publisher}. OPTIONAL{?p :race ?race}. OPTIONAL{?p :skincolor ?skincolor}. OPTIONAL{?p :speed ?speed}. OPTIONAL{?p :strength ?strength}. OPTIONAL{?p :total ?total}. OPTIONAL{?p :weight ?weight}}'
+  var result = await gdb.execQuery(query);
+  dados = parsePersonagensResult(result)
+  res.status(200).jsonp(dados);
+})  
 
 
 function parsePersonagensResult(result){
