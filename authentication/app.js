@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var favicon = require('serve-favicon')
 var mongoose = require('mongoose')
 
 var indexRouter = require('./routes/index');
@@ -10,7 +11,7 @@ var indexRouter = require('./routes/index');
 var app = express();
 
 // #################### MONGO CONNECTION ####################
-var mongoDB = "mongodb://mongo:27017/auth";
+var mongoDB = "mongodb://localhost/auth";
 
 mongoose.connect(mongoDB, {
     useNewUrlParser: true,
@@ -33,6 +34,7 @@ db.once("open", () => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -54,7 +56,6 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.redirect('http:/localhost:5000')
   res.render('error');
 });
 

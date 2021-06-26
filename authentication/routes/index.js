@@ -6,13 +6,8 @@ var User = require('../controllers/users');
 
 /* GET home page. */
 router.get(['/login','/'], function(req, res, next) {
-  res.render('login', { title: 'Login' });
+  res.render('login', { title: 'Marvel - Login' });
 });
-
-router.get("/signup", function (req, res) {
-  res.render('signup', { title: 'signup' });
-})
-
 
 router.post('/login', function(req, res, next) {
   User.lookUp(req.body._id).then((dados) => {
@@ -22,10 +17,8 @@ router.post('/login', function(req, res, next) {
     } else {
         if (req.body.password == user.password) {
             jwt.sign({
-                _id: user._id,
-                name: user.name,
-                level: user.level
-            }, "VR2021", {
+                _id: user._id
+            }, "prc2021", {
                 expiresIn: "1d"
             }, function (err, token) {
                 if (err) {
@@ -36,7 +29,7 @@ router.post('/login', function(req, res, next) {
                     res.redirect(req.cookies.url);
                   }
                   else{
-                    res.redirect('https://localhost:4000')
+                    res.redirect('https://localhost:3001')
                   }
                   
                 }
@@ -50,12 +43,6 @@ router.post('/login', function(req, res, next) {
 
 router.post("/signup", function (req, res) {
   var user = req.body;
-  if(user.level == 'admin'){
-    user.level=1
-  }
-  else{
-    user.level=0
-  }
   User.insereUser(user).then(() => {
       res.redirect('/login')
   }).catch((err) => {
@@ -66,7 +53,7 @@ router.post("/signup", function (req, res) {
 
 router.post('/verifyToken', function(req,res){
   var token = req.body.token;
-  jwt.verify(token, 'VR2021', function (e, payload) {
+  jwt.verify(token, 'prc2021', function (e, payload) {
     if (e) {
         res.status(403).jsonp({msg:"JWT is not valid."})
     } else {

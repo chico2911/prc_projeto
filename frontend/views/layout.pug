@@ -19,6 +19,9 @@ html
           li
             a(href='/personagens/') Characters
           li
-            btn Search
+            if level == 0
+              a(href='/logout') Logout
+            else
+              a(href='/login') Login 
   body
     block content

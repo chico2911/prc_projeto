@@ -7,21 +7,21 @@ var axios = require('axios');
 router.get('/', function(req, res, next) {
   axios.get('http://localhost:3000/comics')
   .then(response=>{
-    res.render('comics', { url:'',title: 'Marvel - Comics',list:response.data });
+    res.render('comics', { url:'',title: 'Marvel - Comics',list:response.data,level:req.level});
   })
 });
 
 router.get('/:id', function(req, res, next) {
   axios.get('http://localhost:3000/comics/' + req.params.id)
   .then(response=>{
-    res.render('comic', {url:'/comics', title: 'Marvel - Comics (' + req.params.id + ' )',list:response.data });
+    res.render('comic', {url:'/comics', title: 'Marvel - Comics (' + req.params.id + ' )',list:response.data,level:req.level});
   })
 });
 
 router.get('/power/:power', function(req, res, next) {
     axios.get('http://localhost:3000/comics/power/'+req.params.power)
     .then(response=>{
-      res.render('comics', {url:'/comics', title: 'Marvel - '+ req.params.power+ ' Comics',list:response.data });
+      res.render('comics', {url:'/comics', title: 'Marvel - '+ req.params.power+ ' Comics',list:response.data,level:req.level});
     })
   });
 
