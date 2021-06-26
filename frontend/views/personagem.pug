@@ -5,8 +5,6 @@ block content
         .w3-container.w3-display-middle(style='width: 60%;')
             header.w3-container.w3-red.w3-center
                 h3='Character : ' + list.name
-            br
-            br
             br  
             table(class='w3-table-all')
                     tr
@@ -27,23 +25,23 @@ block content
                         td.w3-center=list.height
             br
             br
-            br
-            br
             if(list.temPoder.length > 0)
-                table(class='w3-table-all')
+                table#example_user(class='w3-table-all')
+                    thead
                         tr
                             th.w3-center Powers
+                    tbody    
                         for power in list.temPoder
                             tr
                                 td.w3-center= power
             br
             br
-            br
-            br
             if(list.apareceEm.length > 0)
-                table(class='w3-table-all')
+                table#apareceEm(class='w3-table-all')
+                    thead
                         tr
                             th.w3-center Participations
+                    tbody    
                         for participation in list.apareceEm
                             tr
                                 td.w3-center

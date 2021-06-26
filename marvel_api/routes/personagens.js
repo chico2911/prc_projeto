@@ -77,7 +77,6 @@ async function getPersonagem(result,id){
   temPoder = []
   apareceEm = []
   newResult.results.bindings.map(c=>{
-    console.log(c)
     if (!temPoder.includes(c.temPoder.value.split('#')[1])){
       temPoder.push(c.temPoder.value.split('#')[1])
     }

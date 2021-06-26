@@ -1,19 +1,23 @@
 $(document).ready( function () {
-    var table1 = $('#example').DataTable( {
-      pageLength : 18,
-      "lengthChange": false,
-      info: false
-    } )
-    document.getElementById("example").style.display = "block"
+    try {
+        var table1 = $('#example').DataTable( {
+            pageLength : 18,
+            "lengthChange": false,
+            info: false
+          } )
+          document.getElementById("example").style.display = "block"
+        }
+    catch (e){}    
+    
 
-    var table2 = $('#example2').DataTable( {
+    var table2 = $('#apareceEm').DataTable( {
         pageLength : 6,
         "lengthChange": false,
         info: false
     } )
 
     var table3 = $('#example_user').DataTable( {
-        pageLength : 2,
+        pageLength : 3,
         "lengthChange": false,
         info: false
     } )

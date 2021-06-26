@@ -3,13 +3,31 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose')
 
-var personagensRouter = require('./routes/personagens');
-var comicsRouter = require('./routes/comics');
-var usersRouter = require('./routes/users');
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+// #################### MONGO CONNECTION ####################
+var mongoDB = "mongodb://mongo:27017/auth";
+
+mongoose.connect(mongoDB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+});
+
+var db = mongoose.connection;
+
+db.on("error", () => {
+    console.log("MongoDB connection failed...");
+});
+db.once("open", () => {
+    console.log("MongoDB connection successful...");
+});
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,9 +39,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/personagens', personagensRouter);
-app.use('/comics', comicsRouter);
-app.use('/users', usersRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
@@ -39,6 +54,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  res.redirect('http:/localhost:5000')
   res.render('error');
 });
 
