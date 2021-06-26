@@ -9,7 +9,7 @@ var prefixes = `
         `
 
 exports.execQuery = async function (query){
-    var getLink = "http://localhost:7200/repositories/marvel_comics?query="
+    var getLink = "http://epl.di.uminho.pt:8738/api/rdf4j/query/marvel_comics?query="
     var encoded = encodeURIComponent(prefixes + query)
     var result = await axios.get(getLink + encoded)
     return result.data

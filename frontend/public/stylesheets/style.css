@@ -233,3 +233,81 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-border-dark-grey,.w3-hover-border-dark-grey:hover,.w3-border-dark-gray,.w3-hover-border-dark-gray:hover{border-color:#616161!important}
 .w3-border-pale-red,.w3-hover-border-pale-red:hover{border-color:#ffe7e7!important}.w3-border-pale-green,.w3-hover-border-pale-green:hover{border-color:#e7ffe7!important}
 .w3-border-pale-yellow,.w3-hover-border-pale-yellow:hover{border-color:#ffffcc!important}.w3-border-pale-blue,.w3-hover-border-pale-blue:hover{border-color:#e7ffff!important}
+.navigation-bar {
+    width: 100%;  /* i'm assuming full width */
+    height: 80px; /* change it to desired width */
+    background-color: red; /* change to desired color */
+}
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    margin-top: 15px;    /* if you want it vertically middle of the navbar. */
+}
+.navigation-bar > a {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    height: 80px;        /* if you want it to take the full height of the bar */
+    line-height: 80px;    /* if you want it vertically middle of the navbar */
+}
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 180px;
+    height: 70px;
+    margin-left: -40px;
+    margin-right: 800px;
+    margin-top: 0px;    /* if you want it vertically middle of the navbar. */
+}
+  /* ~~ Top Navigation Bar ~~ */
+  
+  #navigation-container {
+    width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+  }
+  
+  .navigation-bar {
+    background-color: #ED1D24;
+    height: 70px;
+    width: 100%;
+  }
+  
+  .navigation-bar ul {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    display:inline-block;
+    vertical-align:top;
+  }
+  
+  .navigation-bar li {
+    list-style-type: none;
+    padding: 0px;
+    height: 24px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: inline;
+  }
+  
+  .navigation-bar li a {
+    color: white;
+    font-size: 16px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    line-height: 70px;
+    padding: 5px 15px;
+    opacity: 0.7;
+  }
+  
+  #menu {
+    float: right;
+  }

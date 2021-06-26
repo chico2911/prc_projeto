@@ -3,9 +3,21 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/table.css')
+    script(src='/javascripts/jquery.js')
+    script(src='/javascripts/functions.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js')
+    script(type='text/javascript' charset='utf8' src='http://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js')
   header 
-    .w3-bar.w3-red 
-      .w3-left
-        img(src='images/Marvel_Logo.png' width="15%" height="15%" )
+    .navigation-bar
+      #navigation-container
+        img.logo(src='/images/Marvel_Logo.png')
+        ul
+          li
+            a(href='#') Comics
+          li
+            a(href='#') Characters
+          li
+            btn Search
   body
     block content

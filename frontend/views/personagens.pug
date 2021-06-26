@@ -1,4 +1,24 @@
 extends layout
 
 block content
-    link(rel='stylesheet' href='stylesheets/Personagens.css' media='screen')
+    .w3-display-classes
+        .w3-container.w3-display-middle(style='width: 60%;')
+            table#example.dataTable.display(style='width: 100%;' role='grid' aria-describedby='example_info')
+                thead
+                    tr(role='row')
+                        th.sorting(tabindex='0' aria-controls='example' rowspan='1' colspan='1' aria-label='Name: activate to sort column ascending' style='width: 167px;') Name
+                        th.sorting.sorting_desc(tabindex='0' aria-controls='example' rowspan='1' colspan='1' aria-label='Alignment: activate to sort column ascending' style='width: 126px;' aria-sort='descending') Alignment
+                        th.sorting(tabindex='0' aria-controls='example' rowspan='1' colspan='1' aria-label='Gender: activate to sort column ascending' style='width: 60px;') Gender
+                        th.sorting(tabindex='0' aria-controls='example' rowspan='1' colspan='1' aria-label='Race: activate to sort column ascending' style='width: 98px;') Race  
+                tbody
+                    for char in list
+                        tr.odd
+                            td
+                                a(href='/personagens/'+char.id)=char.name
+                            if char.alignment=='good'
+                                td Good
+                            else
+                                td Bad
+                            td=char.gender
+                            td=char.race
+    footer.w3-black
