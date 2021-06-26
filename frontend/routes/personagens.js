@@ -11,6 +11,13 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/:id', function(req, res, next) {
+  axios.get('http://localhost:3000/personagens/' + req.params.id)
+  .then(response=>{
+    res.render('personagem', { title: 'Marvel - Characters (' + req.params.id + ' )',list:response.data });
+  })
+});
+
 router.get('/power/:power', function(req, res, next) {
   axios.get('http://localhost:3000/personagens/power/'+req.params.power)
   .then(response=>{

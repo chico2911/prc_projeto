@@ -111,7 +111,7 @@ async function getPersonagem(result,id){
         apareceEm: apareceEm
       }
   })
-  return dados  
+  return dados[0]  
 }
 
 

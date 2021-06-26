@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    .w3-display-classes
+        .w3-container.w3-display-middle(style='width: 60%;')
+            header.w3-container.w3-red.w3-center
+                h3='Comic : ' + list.title
+            br
+            br
+            br    
+            table(class='w3-table-all')
+                    tr
+                        th.w3-center Id
+                        th.w3-center Title
+                        th.w3-center Issue Number
+                    tr
+                        td.w3-center=list.id
+                        td.w3-center=list.title
+                        td.w3-center=list.issueNumber 
+            br
+            br
+            br
+            table#example(class='w3-table-all')
+                thead
+                    tr
+                        th.w3-center Characters
+                tbody        
+                    for personagem in list.personagens
+                        tr
+                            td.w3-center
+                                a(href="/personagens/"+personagem.idP)=personagem.nameP
+
+    footer.w3-black

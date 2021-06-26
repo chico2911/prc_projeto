@@ -2,21 +2,28 @@ extends layout
 
 block content
     .w3-display-classes
-        .w3-container.w3-display-middle(style='width: 60%;')
-            table#example.dataTable.display(style='width: 100%;display:none' role='grid' aria-describedby='example_info')
+        .w3-container.w3-display-middle(style='margin-top:10px;width: 60%;')
+            table(style='overflow-y:auto;display:none')#example.w3-table-all.w3-responsive
+                colgroup
+                    col(width='60%')
+                    col(width='20%')
+                    col(width='20%')
                 thead
-                    tr(role='row')
-                        th.sorting(tabindex='0' aria-controls='example' rowspan='1' colspan='1' aria-label='Title: activate to sort column ascending' style='width: 167px;') Title
-                        th.sorting.sorting_desc(tabindex='0' aria-controls='example' rowspan='1' colspan='1' aria-label='Issue Number: activate to sort column ascending' style='width: 126px;' aria-sort='descending') Issue Number
-                        th.sorting(tabindex='0' aria-controls='example' rowspan='1' colspan='1' aria-label='# Characters: activate to sort column ascending' style='width: 60px;') # Characters 
+                    tr
+                        th.sorting Title
+                        th.sorting.sorting_desc Issue Number
+                        th.sorting Number of Characters 
                 tbody
                     for comic in list
-                        tr.odd
-                            td
+                        tr(style="max-height:10px;")
+                            td(style="max-height:10px;")
                                 a(href='/comics/'+comic.id)=comic.title
-                            td=comic.issueNumber
+                            if comic.issueNumber.length < 3 
+                                td(style="max-height:10px; resize: none;")= comic.issueNumber
+                            else
+                                td(style="max-height:10px; resize: none;") -
                             if comic.personagens
-                                td=comic.personagens.length
+                                td(style="height:10px;")=comic.personagens.length
                             else
                                 td 0    
     footer.w3-black

@@ -11,6 +11,13 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/:id', function(req, res, next) {
+  axios.get('http://localhost:3000/comics/' + req.params.id)
+  .then(response=>{
+    res.render('comic', {url:'/comics', title: 'Marvel - Comics (' + req.params.id + ' )',list:response.data });
+  })
+});
+
 router.get('/power/:power', function(req, res, next) {
     axios.get('http://localhost:3000/comics/power/'+req.params.power)
     .then(response=>{

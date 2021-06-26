@@ -32,17 +32,21 @@ router.get('/personagem/:id',async function(req, res, next) {
   res.status(200).jsonp(dados);
 });
 
-/* GET comic by id. */
 router.get('/:id',async function(req, res, next) {
   id = req.params.id
-  query = 'select ?issueNumber ?title ?personagens ?nameP where {:'+id+' a :Comic; :issueNumber ?issueNumber; :title ?title; :temPersonagem ?personagens. ?personagens :name ?nameP}'
+  query = 'select ?issueNumber ?title ?personagens ?nameP where {:'+id+' a :Comic; :issueNumber ?issueNumber; :title ?title. OPTIONAL{:'+id+' :temPersonagem ?personagens. ?personagens :name ?nameP}.}'
   var result = await gdb.execQuery(query);
+  console.log(result.results.bindings)
   var dados = result.results.bindings.map(c => {
-    return{
-      idP : c.personagens.value.split('#')[1],
-      nameP: c.nameP.value
+    if(c.personagens!=null){
+      return{
+        idP : c.personagens.value.split('#')[1],
+        nameP: c.nameP.value
     }
-  })
+  }})
+  if(dados[0]==undefined){
+    dados =[]
+  }
   comic = {
     id: req.params.id,
     title: result.results.bindings[0].title.value,

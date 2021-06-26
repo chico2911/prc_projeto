@@ -1,0 +1,51 @@
+extends layout
+
+block content
+    .w3-display-classes
+        .w3-container.w3-display-middle(style='width: 60%;')
+            header.w3-container.w3-red.w3-center
+                h3='Character : ' + list.name
+            br
+            br
+            br  
+            table(class='w3-table-all')
+                    tr
+                        th.w3-center Id
+                        th.w3-center Name
+                        th.w3-center Gender
+                        th.w3-center Alignment
+                        th.w3-center Race
+                        th.w3-center Weight
+                        th.w3-center Height
+                    tr
+                        td.w3-center=list.id
+                        td.w3-center=list.name
+                        td.w3-center=list.gender
+                        td.w3-center=list.alignment 
+                        td.w3-center=list.race
+                        td.w3-center=list.weight
+                        td.w3-center=list.height
+            br
+            br
+            br
+            br
+            if(list.temPoder.length > 0)
+                table(class='w3-table-all')
+                        tr
+                            th.w3-center Powers
+                        for power in list.temPoder
+                            tr
+                                td.w3-center= power
+            br
+            br
+            br
+            br
+            if(list.apareceEm.length > 0)
+                table(class='w3-table-all')
+                        tr
+                            th.w3-center Participations
+                        for participation in list.apareceEm
+                            tr
+                                td.w3-center
+                                    a(href='/comics/'+ participation)= participation
+    footer.w3-black
