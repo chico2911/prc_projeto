@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  res.render('homepage', {title:'Marvel Universe'})
+  console.log(req.level)
+  res.render('homepage', {title:'Marvel Universe',level:req.level})
 });
 
 router.get('/login', function(req, res, next) {
@@ -14,5 +15,41 @@ router.get('/logout', function(req, res, next) {
   res.clearCookie('token');
   res.redirect('http://localhost:3000/')
 });
+
+router.get('/adicionarPersonagem', function(req, res, next) {
+  if(req.level == 1){
+    res.render('adicionarPersonagem',{title:'Admin - Add Character',level:req.level});
+  }
+  else{
+    res.redirect('/')
+  }
+});
+
+router.get('/adicionarComic', function(req, res, next) {
+  if(req.level == 1){
+    res.render('adicionarComic',{title:'Admin - Add Comic',level:req.level});
+  }
+  else{
+    res.redirect('/')
+  }
+});
+
+router.post('/adicionarPersonagem', function(req, res, next) {
+  axios.post('http://localhost:3000/personagem',req.body)
+  .then(response=>{
+    res.status(200).json({msg:'sucess'})
+  })
+  .catch(err=>{res.status(500).json({msg:'error'})})
+  
+});
+
+router.post('/adicionarComic', function(req, res, next) {
+  axios.post('http://localhost:3000/comic',req.body)
+  .then(response=>{
+    res.status(200).json({msg:'sucess'})
+  })
+  .catch(err=>{res.status(500).json({msg:'error'})})
+});
+
 
 module.exports = router;

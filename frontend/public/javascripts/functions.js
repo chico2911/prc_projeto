@@ -28,3 +28,46 @@ $(document).ready( function () {
         info: false
     } )
 } );
+
+
+function sendPersonagem(){
+    var formObj = {};
+    var inputs = $('#form').serializeArray();
+    $.each(inputs, function (i, input) {
+        formObj[input.name] = input.value;
+    });
+    if(confirm('Do you confirm?')){
+        $.ajax({
+            url: 'http://localhost:3001/adicionarPersonagem',
+            type: "POST",
+            data: formObj,
+            success: function () {
+                alert('Character Added with success.')
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('An error occurred...');
+            }
+        });
+    }
+}
+
+function sendComic(){
+    var formObj = {};
+    var inputs = $('#form').serializeArray();
+    $.each(inputs, function (i, input) {
+        formObj[input.name] = input.value;
+    });
+    if(confirm('Do you confirm?')){
+        $.ajax({
+            url: 'http://localhost:3001/adicionarComic',
+            type: "POST",
+            data: formObj,
+            success: function () {
+                alert('Comic Added with success.')
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('An error occurred...');
+            }
+        });
+    }
+}

@@ -113,5 +113,31 @@ async function getPersonagem(result,id){
   return dados[0]  
 }
 
+router.post('/',async function(req,res,next){
+  req.body.id = 'ap' + Date.now();
+  var myquery = `INSERT DATA {
+    :${req.body.id} rdf:type owl:NamedIndividual , :Personagem ;
+    :name "${req.body.name}" ;
+    :alignment "${req.body.alignment}" ;
+    :combat "${req.body.combat}" ;
+    :durability "${req.body.durability}" ;
+    :eyecolor "${req.body.eyecolor}" ;
+    :gender "${req.body.gender}" ;
+    :haircolor "${req.body.haircolor}" ;
+    :height "${req.body.height}" ;
+    :intelligence "${req.body.intelligence}" ;
+    :power "${req.body.power}" ;
+    :publisher "Marvel" ;
+    :race "${req.body.race}" ;
+    :skincolor "${req.body.skincolor}" ;
+    :speed "${req.body.speed}" ;
+    :strength "${req.body.strength}" ;
+    :total "${req.body.total}" ;
+    :weight "${req.body.weight}" .
+  }`;
+  var result = await gdb.execTransaction(myquery);  
+  res.status(200).jsonp("Triplos inseridos ... " + myquery);
+})
+
 
 module.exports = router;

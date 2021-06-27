@@ -25,13 +25,8 @@ router.post('/login', function(req, res, next) {
                   res.render('loginError', { title: 'Login',error:'Não foi possível fazer login.' });
                 } else {
                   res.cookie('token', token)
-                  if(req.cookies.url){
-                    res.redirect(req.cookies.url);
-                  }
-                  else{
+                    res.redirect(req.cookies.url)
                     res.redirect('https://localhost:3001')
-                  }
-                  
                 }
             });
         } else {
@@ -43,6 +38,7 @@ router.post('/login', function(req, res, next) {
 
 router.post("/signup", function (req, res) {
   var user = req.body;
+  console.log(user)
   User.insereUser(user).then(() => {
       res.redirect('/login')
   }).catch((err) => {

@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
       axios.post('http://localhost:5000/verifyToken',{token:req.cookies.token})
       .then(response=>{
         if(response.status == 200){
-          req.user={level:response.data.level}
+          req.level = 1
           next()
         }
         else{res.redirect('/')}

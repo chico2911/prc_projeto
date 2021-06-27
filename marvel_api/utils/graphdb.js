@@ -14,3 +14,15 @@ exports.execQuery = async function (query){
     var result = await axios.get(getLink + encoded)
     return result.data
 }
+
+exports.execTransaction = async function (query) {
+    var postLink = "http://localhost:7200/repositories/marvel_comics/statements";
+    var encoded = encodeURIComponent(prefixes + query);
+    var response;
+    try {
+        response = await axios.post(postLink, `update=${encoded}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}

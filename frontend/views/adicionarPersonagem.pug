@@ -1,0 +1,58 @@
+extends layout
+
+block content
+    .w3-display-classes(style='width:60%;height:60%') 
+        .w3-container.w3-section.w3-card-4.w3-display-middle(style='width:60%;height:60%;;overflow-y:auto') 
+            h2.w3-text-red Add Character
+            form(id='form' sytle='')
+                label.w3-text-red
+                    b Name
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='name')
+                label.w3-text-red
+                    b Alignment
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='alignment')  
+                label.w3-text-red
+                    b Combat
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='combat')  
+                label.w3-text-red
+                    b Durability
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='durability')
+                label.w3-text-red
+                    b Eye color
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='eyecolor')
+                label.w3-text-red
+                    b Gender
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='gender')  
+                label.w3-text-red
+                    b Hair color
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='haircolor')  
+                label.w3-text-red
+                    b Height
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='height') 
+                label.w3-text-red
+                    b Intelligence
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='intelligence')
+                label.w3-text-red
+                    b Power
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='power')  
+                label.w3-text-red
+                    b Race
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='race')  
+                label.w3-text-red
+                    b Skin color
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='skincolor') 
+                label.w3-text-red
+                    b Speed
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='speed')
+                label.w3-text-red
+                    b Strength
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='strength')  
+                label.w3-text-red
+                    b Weight
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='weight')  
+                label.w3-text-red
+                    b Total
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='total')                                                                                                                       
+            br
+            button(onclick="sendPersonagem()").w3-btn.w3-red.w3-display Submit
+            br    

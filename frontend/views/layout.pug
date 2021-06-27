@@ -18,12 +18,18 @@ html
             a(href='/comics/') Comics
           li
             a(href='/personagens/') Characters
-          li
-            if level == 0
-              a(href='/logout') Logout
-            else
-              a(href='/adicionarPersonagem') Add Character
-              a(href='/adicionarComic') Add Comic
-              a(href='/login') Login 
+          if level == 0
+            li
+              a(href='/login') Login
+          else
+            li
+              .w3-dropdown-hover.w3-hide-small
+                button.w3-button Options 
+                  i.fa.fa-caret-down
+                .w3-dropdown-content.w3-bar-block.w3-white.w3-card-4
+                  a.w3-bar-item.w3-button.w3-text-black(href='/adicionarPersonagem') Add Character
+                  a.w3-bar-item.w3-button.w3-text-black(href='/adicionarComic') Add Comic
+                  a.w3-bar-item.w3-button.w3-text-black(href='/logout') Logout
+          
   body
     block content

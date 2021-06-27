@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .w3-display-classes(style='width:60%;height:60%') 
+        .w3-container.w3-section.w3-card-4.w3-display-middle(style='width:60%;height:60%;;overflow-y:auto') 
+            h2.w3-text-red Add Character
+            form(id='form' sytle='')
+                label.w3-text-red
+                    b Title
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='title')
+                label.w3-text-red
+                    b Issue Number
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='issueNumber')                                                                                                                     
+            br
+            button(onclick="sendComic()").w3-btn.w3-red.w3-display Submit
+            br    

@@ -88,4 +88,15 @@ router.get('/search/:title', async function(req,res,next){
     res.status(200).jsonp(dados);
 })
 
+router.post('/',async function(req,res,next){
+  req.body.id = 'ac' + Date.now();
+  var myquery = `INSERT DATA {
+    :${req.body.id} rdf:type owl:NamedIndividual , :Comic ;
+    :title "${req.body.title}" ;
+    :issueNumer "${req.body.issueNumber}" .
+  }`;
+  var result = await gdb.execTransaction(myquery);  
+  res.status(200).jsonp("Triplos inseridos ... " + myquery);
+})
+
 module.exports = router;
