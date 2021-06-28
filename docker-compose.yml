@@ -1,25 +1,32 @@
 version: '3'
 
 services:
+  graph:
+    image: zzglider/mygraphdb:prc2021
+    container_name: mygraph
+    ports:
+      - '7200:7200'
+    networks: 
+      - backFront
+    restart: 
+      always
   mongo:
     image: mongo
-    container_name: mongo_container
+    container_name: mongo
     networks:
       - authFront
     restart: 
       always 
   api:
     image: prc2021/marvel_api
-    container_name: marvel_api
-    ports:
-        - '3000:3000'
+    container_name: api
     networks:
       - backFront
     restart: 
        always   
-  marvel_front: 
+  view: 
     image: prc2021/marvel_front
-    container_name: marvel_front
+    container_name: view
     ports:
         - '3001:3001'
     networks:
@@ -27,11 +34,11 @@ services:
       - 'authFront'   
   auth:
     image: prc2021/auth
-    container_name: authentication_container
+    container_name: auth
     ports:
         - '5000:5000'
     depends_on: 
-      - marvel_front
+      - view
       - mongo   
     networks:
       - 'authFront'    

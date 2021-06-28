@@ -9,14 +9,14 @@ var prefixes = `
         `
 
 exports.execQuery = async function (query){
-    var getLink = "http://localhost:7200/repositories/marvel_comics?query="
+    var getLink = "http://graph:7200/repositories/marvel_comics?query="
     var encoded = encodeURIComponent(prefixes + query)
     var result = await axios.get(getLink + encoded)
     return result.data
 }
 
 exports.execTransaction = async function (query) {
-    var postLink = "http://localhost:7200/repositories/marvel_comics/statements";
+    var postLink = "http://graph:7200/repositories/marvel_comics/statements";
     var encoded = encodeURIComponent(prefixes + query);
     var response;
     try {

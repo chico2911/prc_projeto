@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
       req.level=0
       next()
   } else { // authentication
-      axios.post('http://localhost:5000/verifyToken',{token:req.cookies.token})
+      axios.post('http://auth:5000/verifyToken',{token:req.cookies.token})
       .then(response=>{
         if(response.status == 200){
           req.level = 1

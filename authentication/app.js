@@ -11,7 +11,7 @@ var indexRouter = require('./routes/index');
 var app = express();
 
 // #################### MONGO CONNECTION ####################
-var mongoDB = "mongodb://localhost/auth";
+var mongoDB = "mongodb://mongo:27017/auth";
 
 mongoose.connect(mongoDB, {
     useNewUrlParser: true,

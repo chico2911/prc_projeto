@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var axios = require('axios');
-var url = 'http://localhost:3000/'
+var url = 'http://api:3000/'
 
 
 /* GET home page. */

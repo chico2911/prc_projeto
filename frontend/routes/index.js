@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var axios = require('axios');
 
 router.get('/', function(req, res, next) {
   console.log(req.level)
@@ -13,7 +14,7 @@ router.get('/login', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
   res.clearCookie('token');
-  res.redirect('http://localhost:3000/')
+  res.redirect('http://localhost:3001/')
 });
 
 router.get('/adicionarPersonagem', function(req, res, next) {
@@ -35,7 +36,7 @@ router.get('/adicionarComic', function(req, res, next) {
 });
 
 router.post('/adicionarPersonagem', function(req, res, next) {
-  axios.post('http://localhost:3000/personagem',req.body)
+  axios.post('http://api:3000/personagens',req.body)
   .then(response=>{
     res.status(200).json({msg:'sucess'})
   })
@@ -44,11 +45,11 @@ router.post('/adicionarPersonagem', function(req, res, next) {
 });
 
 router.post('/adicionarComic', function(req, res, next) {
-  axios.post('http://localhost:3000/comic',req.body)
-  .then(response=>{
-    res.status(200).json({msg:'sucess'})
-  })
-  .catch(err=>{res.status(500).json({msg:'error'})})
+    axios.post('http://api:3000/comics',req.body)
+    .then(response=>{
+      res.status(200).json({msg:'sucess'})
+    })
+    .catch(err=>{console.log(err);res.status(500).json({msg:'error'})})
 });
 
 
