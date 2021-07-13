@@ -93,8 +93,9 @@ router.post('/',async function(req,res,next){
   var myquery = `INSERT DATA {
     :${req.body.id} rdf:type owl:NamedIndividual , :Comic ;
     :title "${req.body.title}" ;
-    :issueNumer "${req.body.issueNumber}" .
+    :issueNumber "${req.body.issueNumber}" .
   }`;
+  console.log(myquery)
   var result = await gdb.execTransaction(myquery);  
   res.status(200).jsonp("Triplos inseridos ... " + myquery);
 })
